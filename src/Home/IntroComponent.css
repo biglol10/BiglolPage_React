@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Arvo:ital@1&display=swap");
+
+.introComponent {
+  display: flex;
+  flex-direction: column;
+  background-color: #ecf0f1;
+  z-index: 1;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 10px;
+  padding: 30px;
+  width: 100%;
+  height: 280px;
+  width: 250px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.introComponent > .introComponent_info > .comp_lists > img {
+  margin: 3px;
+}
+
+.comp_lists {
+  display: inline-block;
+}
+
+.comp_lists div {
+  display: inline-block;
+  margin: 3px;
+}
+
+.itemList {
+  border-radius: 2px;
+  position: relative;
+}
+
+.itemList > img {
+  width: 50px;
+  height: 50px;
+}
+
+.itemList > .item_desc {
+  opacity: 0;
+  position: absolute;
+  left: 5px;
+  bottom: -5px;
+  background-color: #1abc9c;
+  z-index: 99;
+  color: white;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.itemList:hover > .item_desc {
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+.introComponent_info {
+  width: 250px;
+  position: absolute;
+  top: 4%;
+  left: 14%;
+}
+
+.introComponent_info > p {
+  text-align: center;
+  margin-bottom: 25px;
+  margin-top: 10px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 25px;
+}
+
+.introComponent > button {
+  margin-top: 50px;
+  background-color: #e6e6f9;
+  border: 1px solid #e6e6f9;
+  font-size: 15px;
+  padding: 15px;
+  border-radius: 5px;
+  font-family: "Arvo", serif;
+}
+
+.introComponent > button:focus {
+  outline: none;
+}
