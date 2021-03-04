@@ -1,0 +1,30 @@
+.sidebar {
+  height: 100vh;
+  /* flex: 0.15; */
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 100vh;
+  width: 15%;
+  background-color: #040404;
+  position: fixed;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: white;
+}
+
+.sidebarOption_logo {
+  margin: 30px 50px 100px 30px;
+}
+
+.sidebarOption {
+  display: flex;
+  align-items: center;
+  margin: 0px 0px 50px 20px;
+}
+
+.sidebarOption > span {
+  padding-left: 10px;
+}

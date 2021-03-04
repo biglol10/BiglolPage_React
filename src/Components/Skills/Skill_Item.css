@@ -1,0 +1,49 @@
+.skillCard {
+  width: 300px !important;
+  background-color: #282828;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 10px;
+  padding: 20px;
+  height: 250px !important;
+  color: azure;
+  border-radius: 30px;
+  position: relative;
+}
+
+.skillCard > * {
+  margin: 5px 0;
+}
+
+.skillCard img {
+  /* width: 100px; */
+  height: 100px;
+  object-fit: contain;
+  position: absolute;
+  top: 5%;
+}
+
+.skillCard h4 {
+  position: absolute;
+  top: 45%;
+}
+
+.skillCard hr {
+  position: absolute;
+  top: 55%;
+}
+
+.skillCard span {
+  position: absolute;
+  top: 60%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.skillCard hr {
+  color: black;
+  width: 80%;
+}

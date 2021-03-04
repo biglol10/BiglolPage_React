@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './Header.css'
 
-function Header() {
+function Header({backStyle}) {
+    const [headerBackStyle, setHeaderBackStyle] = useState('header');
+    useEffect(() => {
+        if(!backStyle){
+            setHeaderBackStyle('header backBlack');
+        }
+    }, [headerBackStyle])
+
     return (
-        <div className="header">
+        <div className={headerBackStyle}>
             <div className="home_text">
                 My First Project Using React + Spring
             </div>

@@ -3,5 +3,10 @@
   background: url("./Images/Home/computers.png");
   background-repeat: no-repeat;
   background-size: cover;
+  overflow-y: overlay;
   /* background-color: #E6E6F9; */
+}
+
+.AppPage {
+  display: flex;
 }

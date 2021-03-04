@@ -2,12 +2,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Arvo:ital@1&display=swap");
 
 .header {
-  height: 60px;
+  height: 7vh;
   display: flex;
   align-items: center;
   position: sticky;
   top: 0;
   font-family: "Source Sans Pro", sans-serif;
+  background: none;
+}
+
+.backBlack {
+  background-color: #f5b041;
 }
 
 .home_text {

@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
+
+.coursesPage {
+  font-family: "Arvo", serif;
+  margin-left: 15%;
+  width: 85%;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm40 40a8 8 0 1 0 0-16 8 8 0 0 0 0 16z' fill='%23eaeaea' fill-opacity='.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+  /* display: grid; */
+  grid-template-columns: repeat(3, 1fr);
+  height: 100vh;
+  overflow-y: overlay;
+  justify-content: center;
+}
+
+.courseText {
+  text-align: center;
+  margin-top: 30px;
+  font-family: "Arvo", serif;
+}
+
+.courseContainer {
+  width: 80%;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+.courseContainer > .courseButtons {
+  display: flex;
+}
+
+.courseContainer > .courseButtons > .courseCategory {
+  padding: 10px 50px;
+}
+
+.courseButtons:hover {
+  cursor: pointer;
+}
+
+.categoryShow {
+  border: 2px solid black;
+  color: tomato;
+}

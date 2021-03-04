@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
+
+.projectBox {
+  width: 80%;
+  max-height: 250px;
+  background-color: #e6e6f9;
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+  margin-top: 100px;
+}
+
+.projectBox:first-of-type {
+  margin-top: 50px;
+}
+
+.projectBox:last-of-type {
+  margin-bottom: 70px;
+}
+
+.projectBox h1 {
+  position: absolute;
+  top: -20%;
+  font-family: "Arvo", serif;
+}
+
+.projectImage img {
+  height: 240px !important;
+  width: 250px;
+  border: 10px solid #f7dc6f;
+  object-fit: fill;
+}
+
+/* You'll need to do two things to prevent the table from becoming too large */
+/* Set the table-layout to fixed: */
+.projectInfoTable table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0.5rem;
+}
+
+/* Set word-wrap to break-word for td/th */
+.projectInfoTable table th,
+.projectInfoTable table td {
+  border-style: solid;
+  border-width: 4px;
+  border-color: #fbfcfc;
+  word-wrap: break-word;
+  border-radius: 5px;
+  font-family: "Arvo", serif;
+}
+
+.projectInfoTable table td a {
+  text-decoration: none;
+  color: black;
+}
+
+.projectInfoTable table tr td:nth-child(1) {
+  padding-left: 10px;
+}
+
+.projectInfoTable table tr td:nth-child(2) {
+  padding-left: 10px;
+}

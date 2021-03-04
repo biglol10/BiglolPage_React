@@ -10,8 +10,20 @@ import LogoSpringBoot from '../Images/Skills/logo-springboot.png';
 
 import logo_skills from './HomeConstVariable';
 import ItemImage from './ItemImage';
+import { Link, useHistory } from 'react-router-dom';
+import { HistoryOutlined } from '@material-ui/icons';
 
 function IntroComponent({variant}) {
+    const history = useHistory();
+
+    const moveToDetails = e => {
+        e.preventDefault();
+        if(variant == 'Skills')
+            history.push('/skills');
+        else if(variant == 'Clone/Projects')
+            history.push('/projects');
+    }
+
     // console.log(variant);
     return (
         <div className="introComponent">
@@ -27,9 +39,8 @@ function IntroComponent({variant}) {
                         ))
                     }
                 </div>
-                
             </div>
-            <button>See Details</button>
+            <button onClick={moveToDetails}>See Details</button>
         </div>
     )
 }
