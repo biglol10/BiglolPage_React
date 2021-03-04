@@ -7,7 +7,7 @@ function CourseItem({name, url, path, instructor_details, price, rating}) {
         <div className="courseItem">
             <a className="courseImage" href={url}>
                 <div className="courseImage playButtonTrigger">
-                    <img src={path} alt="" style={{width:'230px', height:'135px'}}/>
+                    <img src={path} alt="" style={{width:'100%', height:'135px'}}/>
                     <div className="playButton"></div>
                 </div>
             </a>
