@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
+
+.courseItem {
+  width: 230px;
+  display: inline-block;
+  margin: 20px 0px;
+  border-left: 0.5px ridge;
+  border-right: 0.5px ridge;
+  border-bottom: 0.5px ridge;
+  height: 290px !important;
+  position: relative;
+}
+
+.courseItem:hover {
+  box-shadow: 4px 4px 10px #5499c7;
+}
+
+.courseItem a {
+  text-decoration: none;
+}
+
+.courseImage {
+  position: relative;
+  transition: opacity 150ms ease-in-out;
+}
+
+.courseImage:hover {
+  opacity: 0.8;
+}
+
+.playButton {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: url("https://www.udemy.com/staticx/udemy/js/webpack/icon-play.ac3f32ecb72a0c3f674fa5a3f3062a56.svg")
+    no-repeat;
+  background-size: auto 50%;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+  transition: transform 150ms ease-in-out;
+}
+
+.playButton:hover {
+  opacity: 1;
+}
+
+.courseDetails {
+  font-size: 13px;
+  font-family: "Arvo", serif;
+  padding: 12px 15px;
+  text-decoration: none;
+  letter-spacing: 1px;
+  color: black;
+}
+
+.courseDetails > .courseInstructor {
+  position: absolute;
+  bottom: 15%;
+}
+
+.coursePricingRating div:nth-child(1) {
+  position: absolute;
+  bottom: 5%;
+}
+
+.coursePricingRating div:nth-child(2) {
+  position: absolute;
+  bottom: 6%;
+  right: 40%;
+}

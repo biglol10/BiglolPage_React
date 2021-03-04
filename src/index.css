@@ -1,6 +1,7 @@
 * {
-  /* do this before developing */
+  /* (Important) do this before developing */
   margin: 0;
+  /* box-sizing: border-box; */ /* This should have been done at the start of the project too late to do it now */
 }
 
 body {
