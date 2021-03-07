@@ -27,10 +27,13 @@ function Sidebar() {
                 </div>
             </Link>
             
-            <div className="sidebarOption">
-                <InfoIcon/>
-                <span>ABOUT</span>
-            </div>
+            <Link to="/about">
+                <div className="sidebarOption">
+                    <InfoIcon/>
+                    <span>ABOUT</span>
+                </div>
+            </Link>
+            
             <Link to="/skills">
                 <div className="sidebarOption">
                     <StarsIcon/>

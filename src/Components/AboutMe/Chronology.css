@@ -1,0 +1,40 @@
+.chronology{
+    width:200px;
+    position: relative;
+    height: 500px;
+}
+
+.chronology > p, .chronology > div {
+    margin:20px 0px;
+}
+
+.chronology > .compCircle, .chronology > hr, .chronology > .compContent {
+    position:absolute;
+}
+
+.chronology > .compCircle {
+    top:5%;
+    z-index: 1;
+}
+
+.chronology > .arrowLine{
+    width:200px;
+    top:7%;
+    z-index: 0;
+    display: flex;
+    position:absolute;
+}
+
+.chronology > .arrowLine > hr{
+    width:190px;
+}
+
+
+.chronology > .compContent{
+    top: 20%;
+}
+
+.compContent{
+    word-wrap: break-word;
+    width: 210px;
+}
