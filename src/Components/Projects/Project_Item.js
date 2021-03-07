@@ -50,7 +50,7 @@ function Project_Item({itemIdx, name, path, reference, opinion, original_creator
                     </tr>
                     <tr>
                         <td>
-                            DeployedUrl
+                            DeployedUrl:
                         </td>
                         <td>
                             {noUrl ? deployedURL : <a href={deployedURL}>{deployedURL}</a>}

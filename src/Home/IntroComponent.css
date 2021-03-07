@@ -4,7 +4,8 @@
 .introComponent {
   display: flex;
   flex-direction: column;
-  background-color: #ecf0f1;
+  /* background-color: #ecf0f1; */
+  background-color: #332d27;
   z-index: 1;
   align-items: center;
   justify-content: flex-end;
@@ -69,6 +70,7 @@
   margin-top: 10px;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 25px;
+  color: white;
 }
 
 .introComponent > button {

@@ -7,6 +7,7 @@ import Skills from './Components/Skills/Skills';
 import Sidebar from './Header/Sidebar';
 import Projects from './Components/Projects/Projects';
 import Courses from './Components/Courses/Courses';
+import Aboutme from './Components/AboutMe/Aboutme';
 
 function App() {
   return (
@@ -29,6 +30,12 @@ function App() {
             <div className="AppPage">
               <Sidebar/>
               <Courses/>
+            </div>
+          </Route>
+          <Route path="/about">
+            <div className="AppPage">
+              <Sidebar/>
+              <Aboutme/>
             </div>
           </Route>
           <Route path="/">
