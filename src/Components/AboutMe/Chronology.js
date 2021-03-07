@@ -13,7 +13,11 @@ function Chronology() {
                 <hr style={{borderTop: "dotted 3px black"}} />
                 >
             </div>
-            
+            <div class="myarrow">
+  <span class="arrow left"></span>
+  <span class="line"></span>
+  <span class="arrow right"></span>
+</div>
                 
             <div className="compContent">
                 <span>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
