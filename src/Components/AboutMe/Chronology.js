@@ -1,27 +1,28 @@
 import React from 'react';
 import './Chronology.css';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid';
+import Chronology_Const from './AboutConstVariable';
 
-function Chronology() {
+function Chronology({year, circleColor}) {
+
     return (
         <div className="chronology">
-            <p className="compYear">
-                2010
-            </p>
-            <p className="compCircle"><FiberManualRecordIcon/></p>
+            <strong className="compYear">
+                {year}
+            </strong>
+            <p className="compCircle" style={{color:circleColor}}><FiberManualRecordIcon/></p>
             <div className="arrowLine">
-                <hr style={{borderTop: "dotted 3px black"}} />
-                >
+                <hr style={{borderTop: "dotted 3px #E74C3C"}} />
+                <i class="fas fa-angle-double-right"></i>
             </div>
-            <div class="myarrow">
-  <span class="arrow left"></span>
-  <span class="line"></span>
-  <span class="arrow right"></span>
-</div>
                 
             <div className="compContent">
-                <span>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
-                
+                {
+                    Chronology_Const[year].map((item, i) => (
+                        <p><i class="fas fa-comment-dots"></i>{item}</p>
+                    ))
+                }
             </div>
         </div>
     )

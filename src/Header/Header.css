@@ -11,6 +11,11 @@
   background: none;
 }
 
+.header a {
+  text-decoration: none;
+  color: white;
+}
+
 .backBlack {
   background-color: #f5b041;
 }

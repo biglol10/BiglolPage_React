@@ -1,41 +1,76 @@
-.chronology{
-    width:200px;
-    position: relative;
-    height: 500px;
+.chronology {
+  width: 220px;
+  position: relative;
+  height: 500px;
 }
 
-.chronology > p, .chronology > div {
-    margin:20px 0px;
+.chronology > strong,
+.chronology > p,
+.chronology > div {
+  margin: 20px 0px;
 }
 
-.chronology > .compCircle, .chronology > hr, .chronology > .compContent {
-    position:absolute;
+.chronology > strong {
+  font-size: 1.5rem;
+}
+
+.chronology > .compCircle,
+.chronology > hr,
+.chronology > .compContent {
+  position: absolute;
 }
 
 .chronology > .compCircle {
-    top:5%;
-    z-index: 1;
+  top: 5%;
+  z-index: 1;
 }
 
-.chronology > .arrowLine{
-    width:200px;
-    top:7%;
-    z-index: 0;
-    display: flex;
-    position:absolute;
+.chronology > .compCircle > svg {
+  font-size: 40px;
 }
 
-.chronology > .arrowLine > hr{
-    width:190px;
+.chronology > .arrowLine {
+  width: 220px;
+  top: 8.5%;
+  z-index: 0;
+  display: flex;
+  position: absolute;
 }
 
-
-.chronology > .compContent{
-    top: 20%;
+.chronology > .arrowLine > hr {
+  width: 210px;
 }
 
-.compContent{
-    word-wrap: break-word;
-    width: 210px;
+.chronology > .arrowLine > i {
+  position: absolute;
+  left: 213px;
+  top: -11px;
+  font-size: 25px;
 }
 
+/* .chronology > .arrowLine > hr::after {
+  content: ">";
+  position: absolute;
+  left: 190px;
+  top: -18px;
+  font-size: 30px;
+  color: #e74c3c;
+} */
+
+.chronology > .compContent {
+  top: 20%;
+}
+
+.compContent {
+  word-wrap: break-word;
+  width: 250px;
+}
+
+.compContent > P {
+  margin-bottom: 15px;
+}
+
+.compContent > P > i {
+  margin-right: 5px;
+  color: #7765fd;
+}

@@ -2,6 +2,8 @@ import React from 'react';
 import './Aboutme.css';
 import HomeIcon from '@material-ui/icons/Home';
 import Chronology from './Chronology';
+import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid';
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
 function Aboutme() {
     return (
@@ -23,7 +25,7 @@ function Aboutme() {
                     </div>
                     <div className="aboutPhone">
                         <div className="aboutIcon">
-                            <HomeIcon/>
+                            <PhoneAndroidIcon/>
                         </div>
                         <div className="aboutInformation">
                             010-xxxx-xxxx
@@ -31,7 +33,7 @@ function Aboutme() {
                     </div>
                     <div className="aboutEmail">
                         <div className="aboutIcon">
-                            <HomeIcon/>
+                            <MailOutlineIcon/>
                         </div>
                         <div className="aboutInformation">
                             xxxx@xxxx.com
@@ -40,7 +42,11 @@ function Aboutme() {
                 </div>
             </div>
             <div className="chronologyContainer">
-                <Chronology/>
+                <Chronology year='~ 2090' circleColor='#3498DB'/>
+                <Chronology year='2010 ~ 2012' circleColor='#990000'/>
+                <Chronology year='2012 ~ 2014' circleColor='#4b5320'/>
+                <Chronology year='2014 ~ 2018' circleColor='#F7DC6F'/>
+                <Chronology year='2019 ~' circleColor='#C39BD3'/>
             </div>
         </div>
     )
