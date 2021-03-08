@@ -22,6 +22,10 @@ function IntroComponent({variant}) {
             history.push('/skills');
         else if(variant == 'Clone/Projects')
             history.push('/projects');
+        else if(variant == 'AboutMe')
+            history.push('/about');
+        else
+            history.push('/');
     }
 
     // console.log(variant);

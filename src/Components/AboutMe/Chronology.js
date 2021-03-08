@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Chronology.css';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid';
 import Chronology_Const from './AboutConstVariable';
 
 function Chronology({year, circleColor}) {
-
+    const [ tranOpacity, setTranOpacity ] = useState('');
+    useEffect(()=>{
+        const interval = setInterval(()=>{
+            setTranOpacity('appearOpacity');
+        }, 200);
+        return () => clearInterval(interval);
+    }, [])
     return (
-        <div className="chronology">
+        <div className={`chronology  + ${tranOpacity}`}>
             <strong className="compYear">
                 {year}
             </strong>

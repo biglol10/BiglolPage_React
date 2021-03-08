@@ -68,6 +68,8 @@
   background-color: white;
   width: 300px;
   font-family: "Noto Sans JP", sans-serif;
+  opacity: 0;
+  transition: opacity 250ms ease-in-out;
 }
 
 .aboutCity {

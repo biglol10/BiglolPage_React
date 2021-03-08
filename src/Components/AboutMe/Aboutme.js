@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Aboutme.css';
 import HomeIcon from '@material-ui/icons/Home';
 import Chronology from './Chronology';
@@ -6,6 +6,13 @@ import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
 function Aboutme() {
+    const [ tranOpacity, setTranOpacity ] = useState('');
+    useEffect(()=>{
+        const interval = setInterval(()=>{
+            setTranOpacity('appearOpacity');
+        }, 200);
+        return () => clearInterval(interval);
+    }, [])
     return (
         <div className="aboutPage">
             <div className="aboutContainer">
@@ -15,7 +22,7 @@ function Aboutme() {
                     <div className="aboutName">
                         <span>Jiwook Byun</span>
                     </div>
-                    <div className="aboutCity">
+                    <div className={`aboutCity ${tranOpacity}`}>
                         <div className="aboutIcon">
                             <HomeIcon/>
                         </div>
@@ -23,7 +30,7 @@ function Aboutme() {
                             Republic of Korea
                         </div>
                     </div>
-                    <div className="aboutPhone">
+                    <div className={`aboutPhone ${tranOpacity}`}>
                         <div className="aboutIcon">
                             <PhoneAndroidIcon/>
                         </div>
@@ -31,7 +38,7 @@ function Aboutme() {
                             010-xxxx-xxxx
                         </div>
                     </div>
-                    <div className="aboutEmail">
+                    <div className={`aboutEmail ${tranOpacity}`}>
                         <div className="aboutIcon">
                             <MailOutlineIcon/>
                         </div>

@@ -2,6 +2,12 @@
   width: 220px;
   position: relative;
   height: 500px;
+  opacity: 0;
+  transition: opacity 250ms ease-in-out;
+}
+
+.appearOpacity {
+  opacity: 1;
 }
 
 .chronology > strong,
