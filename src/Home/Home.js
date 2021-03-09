@@ -15,11 +15,6 @@ function Home() {
     //         setSmthClass('');
     //     }
     // }
-    <Typical
-        steps={['Hello', 1000, 'Hello world!', 500]}
-        loop={Infinity}
-        wrapper="p"
-      />
 
     return (
         <div className="landing_page">
