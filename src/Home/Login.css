@@ -1,0 +1,69 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
+.loginPage {
+  /* background: url("../Images/Home/LoginPage2.png");
+  height: 93vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow-y: overlay;
+  display: flex; */
+  display: flex;
+}
+
+.accountArea {
+  flex: 0.5;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 70px;
+  width: 70%;
+}
+
+.loginBackImage {
+  flex: 0.5;
+  background: url("../Images/Home/LoginPage3.png");
+  height: 93vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow-y: overlay;
+}
+
+.accountTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: "Lobster", cursive;
+  font-size: 50px;
+  margin-bottom: 100px;
+}
+
+.accountTitle img {
+  width: 150px;
+  object-fit: contain;
+  border-radius: 20px;
+  margin-right: 50px;
+}
+
+.accountArea > hr {
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 80%;
+}
+
+.accountArea > .idpwArea {
+  display: flex;
+  margin: 0 auto;
+  width: 80%;
+  margin-top: 30px;
+}
+
+.accountArea > .idpwArea > .idarea,
+.accountArea > .idpwArea > .pwarea {
+  flex: 0.5;
+}
+
+.submitArea {
+  display: flex;
+  justify-content: space-around;
+}

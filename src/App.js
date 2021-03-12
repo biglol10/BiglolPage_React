@@ -8,6 +8,7 @@ import Sidebar from './Header/Sidebar';
 import Projects from './Components/Projects/Projects';
 import Courses from './Components/Courses/Courses';
 import Aboutme from './Components/AboutMe/Aboutme';
+import Login from './Home/Login';
 
 function App() {
   return (
@@ -36,6 +37,12 @@ function App() {
             <div className="AppPage">
               <Sidebar/>
               <Aboutme/>
+            </div>
+          </Route>
+          <Route path="/login">
+            <div>
+              <Header backStyle={false}/>
+              <Login/>
             </div>
           </Route>
           <Route path="/">

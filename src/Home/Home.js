@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Home.css';
 import IntroComponent from './IntroComponent';
 import Typical from 'react-typical'
@@ -15,6 +15,17 @@ function Home() {
     //         setSmthClass('');
     //     }
     // }
+
+    useEffect(()=>{
+        const keyEvent = window.addEventListener('keydown', (event)=>{
+            if(event.ctrlKey == true && event.key == 'b'){
+                alert("SADF");
+            }
+        });
+        return () => {
+            window.removeEventListener('keydown', keyEvent);
+        }
+    },[])
 
     return (
         <div className="landing_page">

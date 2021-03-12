@@ -8,7 +8,10 @@ function Header({backStyle}) {
         if(!backStyle){
             setHeaderBackStyle('header backBlack');
         }
-    }, [headerBackStyle])
+        else{
+            setHeaderBackStyle('header');
+        }
+    }, [backStyle])
 
     return (
         <div className={headerBackStyle}>
@@ -47,12 +50,14 @@ function Header({backStyle}) {
                         </span>
                     </div>
                 </Link>
+                <Link to="/login">
+                    <div className="header_link_option">
+                        <span className="headerText">
+                            Login
+                        </span>
+                    </div>
+                </Link>
                 
-                <div className="header_link_option">
-                    <span className="headerText">
-                        Login
-                    </span>
-                </div>
             </div>
         </div>
     )

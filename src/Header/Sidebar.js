@@ -8,6 +8,7 @@ import ComputerIcon from '@material-ui/icons/Computer';
 import SubjectIcon from '@material-ui/icons/Subject';
 import StarsIcon from '@material-ui/icons/Stars';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import LockOpenIcon from '@material-ui/icons/LockOpen';
 import { Link } from 'react-router-dom';
 
 
@@ -52,7 +53,12 @@ function Sidebar() {
                     <span>CLONE / PROJECTS</span>
                 </div>
             </Link>
-            
+            <Link to="/login">
+                <div className="sidebarOption">
+                    <LockOpenIcon/>
+                    <span>Login</span>
+                </div>
+            </Link>
         </div>
     )
 }
