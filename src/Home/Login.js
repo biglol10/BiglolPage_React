@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from '../axios';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -12,11 +12,14 @@ import Icon from '@material-ui/core/Icon';
 import { makeStyles } from '@material-ui/core/styles';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link, useHistory } from 'react-router-dom';
 
 function Login() {
     const [user, setUser] = useState({username: '', password: ''})
     const [isAuthenticated, setAuth] = useState(false);
-    const [checkedG, setCheckedG] = useState(true);
+    const [checkedG, setCheckedG] = useState();
+
+    const history = useHistory();
 
     const GreenCheckbox = withStyles({
         root: {
@@ -34,6 +37,7 @@ function Login() {
 
     const handleCheckChange = (event) => {
         setCheckedG(event.target.checked);
+        localStorage.setItem("remem",event.target.checked);
     };
 
     const useStyles = makeStyles((theme) => ({
@@ -49,6 +53,9 @@ function Login() {
             toast.warn("Username Or Password length is incorrect", {
                 position: toast.POSITION.BOTTOM_LEFT
             })
+            // const aaaa = sessionStorage.getItem("ASFSADF");
+            // if(aaaa==null)
+            //     alert("QWRQWER");
             return;
         }
 
@@ -58,8 +65,12 @@ function Login() {
         })
         .then((response) => {
             console.log(response);
+            const jwtToken = response.headers['authorization'];
+            sessionStorage.setItem("jwt", jwtToken);
+            setAuth(true);
+            history.push('/');
         }, (error) => {
-            console.log(error);
+            // console.log(error);
             toast.error("Username/Password is incorrect", {
                 position: toast.POSITION.BOTTOM_LEFT
             })
@@ -84,7 +95,18 @@ function Login() {
     //   }
     // })
     // .catch(err => console.error(err)) 
-    }  
+    }
+
+    useEffect(()=>{
+        const rememberCheck = localStorage.getItem("remem");
+        // console.log('checkg ', checkedG);
+        // console.log('remem ', rememberCheck);
+        if(rememberCheck == null || rememberCheck == false || rememberCheck == 'false' || checkedG == false)
+            setCheckedG(false);
+        else
+            setCheckedG(true);
+        
+    },[])
 
     return (
         <div className="loginPage">
@@ -138,9 +160,7 @@ function Login() {
                     </Button>
                 </div>                
             </div>
-            <div className="loginBackImage">
-
-            </div>
+            <div className="loginBackImage"></div>
             <ToastContainer autoClose={3000} /> 
         </div>
     )
