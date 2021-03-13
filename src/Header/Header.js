@@ -67,7 +67,7 @@ function Header({backStyle}) {
                 <Link to="/projects">
                     <div className="header_link_option">
                         <span className="headerText">
-                            Some Projects
+                            Projects
                         </span>
                     </div>
                 </Link>
