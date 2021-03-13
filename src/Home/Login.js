@@ -37,7 +37,6 @@ function Login() {
 
     const handleCheckChange = (event) => {
         setCheckedG(event.target.checked);
-        localStorage.setItem("remem",event.target.checked);
     };
 
     const useStyles = makeStyles((theme) => ({
@@ -53,9 +52,6 @@ function Login() {
             toast.warn("Username Or Password length is incorrect", {
                 position: toast.POSITION.BOTTOM_LEFT
             })
-            // const aaaa = sessionStorage.getItem("ASFSADF");
-            // if(aaaa==null)
-            //     alert("QWRQWER");
             return;
         }
 
@@ -67,6 +63,8 @@ function Login() {
             console.log(response);
             const jwtToken = response.headers['authorization'];
             sessionStorage.setItem("jwt", jwtToken);
+            localStorage.setItem("remem", checkedG);
+            localStorage.setItem("idvalue", user.username);
             setAuth(true);
             history.push('/');
         }, (error) => {
@@ -101,11 +99,31 @@ function Login() {
         const rememberCheck = localStorage.getItem("remem");
         // console.log('checkg ', checkedG);
         // console.log('remem ', rememberCheck);
-        if(rememberCheck == null || rememberCheck == false || rememberCheck == 'false' || checkedG == false)
+        const userName = localStorage.getItem("idvalue");
+        if(rememberCheck == null || rememberCheck == false || rememberCheck == 'false' || checkedG == false){
             setCheckedG(false);
-        else
+            setUser({username: '', password: ''});
+        }
+        else{
+            setUser({username: userName != null && userName, password: ''});
             setCheckedG(true);
-        
+        }
+        const inputElement1 = document.getElementById('outlined-required1');
+        const inputEnter1 = inputElement1.addEventListener('keypress', (event) => {
+            if(event.key === 'Enter'){
+                login();
+            }
+        })
+        const inputElement2 = document.getElementById('outlined-required2');
+        const inputEnter2 = inputElement2.addEventListener('keypress', (event) => {
+            if(event.key === 'Enter'){
+                login();
+            }
+        })
+        return () => {
+            inputElement1.removeEventListener('keypress', inputEnter1);
+            inputElement2.removeEventListener('keypress', inputEnter2);
+        }
     },[])
 
     return (
@@ -121,18 +139,19 @@ function Login() {
                     <div className="idarea">
                     <TextField
                         required
-                        id="outlined-required"
+                        id="outlined-required1"
                         label="Account"
                         name="username"
                         defaultValue=""
                         variant="outlined"
                         onChange={handleChange}
+                        value={user.username}
                     />
                     </div>
                     <div className="pwarea">
                     <TextField
                         required
-                        id="outlined-required"
+                        id="outlined-required2"
                         label="Password"
                         name="password"
                         defaultValue=""

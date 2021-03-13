@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import WebIcon from '@material-ui/icons/Web';
 import './Sidebar.css';
 import HomeIcon from "@material-ui/icons/Home";
@@ -9,10 +9,35 @@ import SubjectIcon from '@material-ui/icons/Subject';
 import StarsIcon from '@material-ui/icons/Stars';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
-import { Link } from 'react-router-dom';
-
+import LockIcon from '@material-ui/icons/Lock';
+import { Link, useHistory } from 'react-router-dom';
 
 function Sidebar() {
+    const history = useHistory();
+
+    const [loginString, setLoginString] = useState('');
+
+    useEffect(() => {
+        const jwtToken = sessionStorage.getItem("jwt");
+        if(jwtToken != null){
+            setLoginString('Logout');
+        }
+        else{
+            setLoginString('Login');
+        }
+    }, [])
+
+    const loginlogout = (inOrOut) => {
+        if(inOrOut == 'Login'){
+            history.push('/login');
+        }
+        else{
+            sessionStorage.removeItem('jwt');
+            history.push('/');
+            setLoginString('Login');
+        }
+    }
+
     return (
         <div className="sidebar">
             <Link to="/">
@@ -53,10 +78,16 @@ function Sidebar() {
                     <span>CLONE / PROJECTS</span>
                 </div>
             </Link>
-            <Link to="/login">
+            <Link onClick={() => loginlogout(loginString)}>
                 <div className="sidebarOption">
-                    <LockOpenIcon/>
-                    <span>Login</span>
+                    {
+                        loginString == 'Login' ? (
+                            <LockOpenIcon/>
+                        ) : (
+                            <LockIcon/>
+                        )
+                    }
+                    <span>{loginString}</span>
                 </div>
             </Link>
         </div>

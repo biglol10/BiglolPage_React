@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './Header.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 function Header({backStyle}) {
+    const history = useHistory();
+
+    const [loginString, setLoginString] = useState('');
     const [headerBackStyle, setHeaderBackStyle] = useState('header');
     useEffect(() => {
         if(!backStyle){
@@ -11,7 +14,25 @@ function Header({backStyle}) {
         else{
             setHeaderBackStyle('header');
         }
+        const jwtToken = sessionStorage.getItem("jwt");
+        if(jwtToken != null){
+            setLoginString('Logout');
+        }
+        else{
+            setLoginString('Login');
+        }
     }, [backStyle])
+
+    const loginlogout = (inOrOut) => {
+        if(inOrOut == 'Login'){
+            history.push('/login');
+        }
+        else{
+            sessionStorage.removeItem('jwt');
+            history.push('/');
+            setLoginString('Login');
+        }
+    }
 
     return (
         <div className={headerBackStyle}>
@@ -50,14 +71,13 @@ function Header({backStyle}) {
                         </span>
                     </div>
                 </Link>
-                <Link to="/login">
+                <Link onClick={() => loginlogout(loginString)}>
                     <div className="header_link_option">
                         <span className="headerText">
-                            Login
+                            {loginString}
                         </span>
                     </div>
                 </Link>
-                
             </div>
         </div>
     )

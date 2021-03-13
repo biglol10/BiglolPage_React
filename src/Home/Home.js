@@ -19,7 +19,7 @@ function Home() {
     useEffect(()=>{
         const keyEvent = window.addEventListener('keydown', (event)=>{
             if(event.ctrlKey == true && event.key == 'b'){
-                alert("SADF");
+                // alert("SADF");
             }
         });
         return () => {
