@@ -48,7 +48,9 @@ function Login() {
     const classes = useStyles();
 
     const login = () => {
-        if(user.username.length < 3 || user.password.length < 3){
+        const userId = document.getElementById('outlined-required1').value; // added because handleChange not properly after adding custom event
+        const userPw = document.getElementById('outlined-required2').value;
+        if(userId.length < 3 || userPw.length < 3){
             toast.warn("Username Or Password length is incorrect", {
                 position: toast.POSITION.BOTTOM_LEFT
             })
@@ -56,8 +58,8 @@ function Login() {
         }
 
         axios.post('/login', {
-            username: user.username,
-            password: user.password
+            username: userId,  // modified because handleChange not properly after adding custom event
+            password: userPw
         })
         .then((response) => {
             console.log(response);
