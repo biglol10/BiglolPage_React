@@ -8,23 +8,19 @@ function Skills() {
 
     const [skillList, setSkillList] = useState([]);
 
+    const jwtToken = sessionStorage.getItem("jwt");
+
     useEffect(()=>{
         const getSkillList = async () => {
             const response = await axios({
                 method: 'get',
-                url: '/skills'
+                url: '/skills',
+                // headers: {'Authorization': jwtToken}
             })
             setSkillList(response.data)
         }
         getSkillList();
     }, [])
-
-    const ticketNotVisibleState = {
-        transform: "translateX(-100%)",
-        opacity: 0.1
-    };
-
-    // console.log(skillList);
 
     return (
         // <div className="skillPage" dangerouslySetInnerHTML={ {__html: stringVar}}>
