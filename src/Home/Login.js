@@ -13,6 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link, useHistory } from 'react-router-dom';
+import { useStateValue } from '../StateProvider';
 
 function Login() {
     const [user, setUser] = useState({username: '', password: ''})
@@ -20,6 +21,8 @@ function Login() {
     const [checkedG, setCheckedG] = useState();
 
     const history = useHistory();
+
+    const [{}, dispatch] = useStateValue();
 
     const GreenCheckbox = withStyles({
         root: {
@@ -48,9 +51,7 @@ function Login() {
     const classes = useStyles();
 
     const login = () => {
-        const userId = document.getElementById('outlined-required1').value; // added because handleChange not properly after adding custom event
-        const userPw = document.getElementById('outlined-required2').value;
-        if(userId.length < 3 || userPw.length < 3){
+        if(user.username.length < 3 || user.password.length < 3){
             toast.warn("Username Or Password length is incorrect", {
                 position: toast.POSITION.BOTTOM_LEFT
             })
@@ -58,17 +59,22 @@ function Login() {
         }
 
         axios.post('/login', {
-            username: userId,  // modified because handleChange not properly after adding custom event
-            password: userPw
+            username: user.username,  
+            password: user.password
         })
         .then((response) => {
-            console.log(response);
             const jwtToken = response.headers['authorization'];
             sessionStorage.setItem("jwt", jwtToken);
             localStorage.setItem("remem", checkedG);
             localStorage.setItem("idvalue", user.username);
             setAuth(true);
             history.push('/');
+
+            dispatch({
+                type: 'SET_USER',
+                user: jwtToken
+            })
+
         }, (error) => {
             // console.log(error);
             toast.error("Username/Password is incorrect", {
@@ -110,22 +116,22 @@ function Login() {
             setUser({username: userName != null && userName, password: ''});
             setCheckedG(true);
         }
-        const inputElement1 = document.getElementById('outlined-required1');
-        const inputEnter1 = inputElement1.addEventListener('keypress', (event) => {
-            if(event.key === 'Enter'){
-                login();
-            }
-        })
-        const inputElement2 = document.getElementById('outlined-required2');
-        const inputEnter2 = inputElement2.addEventListener('keypress', (event) => {
-            if(event.key === 'Enter'){
-                login();
-            }
-        })
-        return () => {
-            inputElement1.removeEventListener('keypress', inputEnter1);
-            inputElement2.removeEventListener('keypress', inputEnter2);
-        }
+        // const inputElement1 = document.getElementById('outlined-required1');
+        // const inputEnter1 = inputElement1.addEventListener('keypress', (event) => {
+        //     if(event.key === 'Enter'){
+        //         login();
+        //     }
+        // })
+        // const inputElement2 = document.getElementById('outlined-required2');
+        // const inputEnter2 = inputElement2.addEventListener('keypress', (event) => {
+        //     if(event.key === 'Enter'){
+        //         login();
+        //     }
+        // })
+        // return () => {
+        //     inputElement1.removeEventListener('keypress', inputEnter1);
+        //     inputElement2.removeEventListener('keypress', inputEnter2);
+        // }
     },[])
 
     return (
@@ -148,6 +154,11 @@ function Login() {
                         variant="outlined"
                         onChange={handleChange}
                         value={user.username}
+                        onKeyPress={ e => {
+                            if(e.key === 'Enter'){
+                                login();
+                            }
+                        }}
                     />
                     </div>
                     <div className="pwarea">
@@ -160,6 +171,11 @@ function Login() {
                         variant="outlined"
                         type="password"
                         onChange={handleChange}
+                        onKeyPress={ e => {
+                            if(e.key === 'Enter'){
+                                login();
+                            }
+                        }}
                     />
                     </div>
                 </div>

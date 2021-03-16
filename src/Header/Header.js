@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import './Header.css';
 import { Link, useHistory } from 'react-router-dom';
+import { useStateValue } from '../StateProvider';
 
 function Header({backStyle}) {
     const history = useHistory();
 
     const [loginString, setLoginString] = useState('');
     const [headerBackStyle, setHeaderBackStyle] = useState('header');
+
+    const [{jwt_token}, dispatch] = useStateValue();
+
     useEffect(() => {
         if(!backStyle){
             setHeaderBackStyle('header backBlack');
@@ -31,6 +35,10 @@ function Header({backStyle}) {
             sessionStorage.removeItem('jwt');
             history.push('/');
             setLoginString('Login');
+
+            dispatch({
+                type: 'SET_USER_NULL'
+            })
         }
     }
 
