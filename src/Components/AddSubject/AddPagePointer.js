@@ -1,7 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './AddPagePointer.css';
 
-function AddPagePointer() {
+function AddPagePointer({changeDots}) {
+    const handlePageClick = (idx) => {
+        const slides = document.querySelectorAll('.slide');
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        })
+        const thisslide = document.querySelector(`.page-${idx} svg`);
+        thisslide.classList.add('active');
+        changeDots(idx);
+    }
+
     return (
         <div class="pages">
             <div class="page-1">
@@ -13,8 +23,10 @@ function AddPagePointer() {
                     viewBox="0 0 12 12"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
+                    onClick={idx => handlePageClick(1)}
                 >
                     <circle cx="6" cy="6" r="6" fill="white" />
+                    
                 </svg>
             </div>
             <div class="page-2">
@@ -26,6 +38,7 @@ function AddPagePointer() {
                     viewBox="0 0 12 12"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
+                    onClick={idx => handlePageClick(2)}
                 >
                     <circle cx="6" cy="6" r="6" fill="white" />
                 </svg>
@@ -39,6 +52,7 @@ function AddPagePointer() {
                     viewBox="0 0 12 12"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
+                    onClick={idx => handlePageClick(3)}
                 >
                     <circle cx="6" cy="6" r="6" fill="white" />
                 </svg>

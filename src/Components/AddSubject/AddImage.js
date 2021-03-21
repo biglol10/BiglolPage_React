@@ -1,6 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import axios from 'axios';
 
+// This is an example Code... Not used
+
 function FileUpload() {
     const [file, setFile] = useState('');
     const [filename, setFilename] = useState('Choose File');

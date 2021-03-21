@@ -12,6 +12,7 @@
   color: azure;
   border-radius: 30px;
   position: relative;
+  border: 1px solid rebeccapurple;
 }
 
 .skillCard > * {

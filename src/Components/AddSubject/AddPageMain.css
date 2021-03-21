@@ -1,16 +1,24 @@
 .addPageMain {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .addPage{
-    color: white;
+  color: white;
   background: radial-gradient(rgba(43, 55, 96, 1), rgba(11, 16, 35, 1));
   display: grid;
   grid-template-columns: 5% 1fr 1fr 1fr 5%;
-    min-height:93vh;
+  min-height:93vh;
+}
+
+.projectItem{
+    position:absolute;
+    bottom: 0%;
+    left: 0%;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .details {
@@ -32,14 +40,14 @@
     border-radius: 30px;
 }
 
-#submitSkill {
+#submitSkill, #submitProject, #submitCourse {
     margin-top:15px;
     margin-bottom: 20px;
     float: right;
 }
 
 .addPage > form > .hero > h2{
-    margin:15px 0px;
+    margin:5px 0px;
 }
 
 .addPage > form > .hero{
@@ -50,6 +58,11 @@
 .addPage > form > .hero > .MuiFormControl-root{
     width: 100%;
     margin:15px 0px;
+}
+
+.addPage > form > .projectInput > .MuiFormControl-root{
+    width: 100%;
+    margin:5px 0px;
 }
 
 .filebox{

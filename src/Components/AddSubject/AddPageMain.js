@@ -8,7 +8,9 @@ import AddPagePointer from './AddPagePointer';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import AddSkill from './AddSkill';
-
+import AddProject from './AddProject';
+import { Timer10TwoTone } from '@material-ui/icons';
+import AddCourse from './AddCourse';
 
 
 function AddPageMain() {
@@ -31,13 +33,49 @@ function AddPageMain() {
         PopupboxManager.open({ content })
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        alert("ASDF");
-    }
-
     const handleChange = (event) => {
         setItemAttribute({...itemAttribute, [event.target.name] : event.target.value});
+    }
+
+    
+    const backgrounds = [
+        `radial-gradient(#2B3760, #0B1023)`,
+        `radial-gradient(#4E3022, #161616)`,
+        `radial-gradient(#4E4342, #161616)`
+    ];
+    
+    const [current, setCurrent] = useState(0);
+
+    const nextSlide = (pageNumber) => {
+        const slides = document.querySelectorAll(".slide");
+        const pages = document.querySelectorAll(".addPage");
+        pageNumber-=1;
+        const nextPage = pages[pageNumber];
+        const currentPage = pages[current];
+        const nextForm = nextPage.querySelector('form');
+        const currentForm = currentPage.querySelector('form');
+        const nextText = nextPage.querySelector('.details');
+        
+        // since there is no import for this specific one, use window.
+        const tl = new window.TimelineMax({
+            onStart: function(){
+                slides.forEach(slide => {
+                    slide.style.pointerEvents = "none"
+                })
+            },
+            onComplete: function(){
+                slides.forEach(slide => {
+                    slide.style.pointerEvents = "all";
+                })
+            }
+        })
+
+        tl.fromTo(currentForm, 0.3, { y: '0%'}, {y: '-200%'})
+          .fromTo(currentPage, 0.3, {opacity: 1, pointerEvents: 'all'}, { opacity: 0, pointerEvents: 'none'})
+          .fromTo(nextPage, 0.3, {opacity: 0, pointerEvents: 'none'}, {opacity: 1, pointerEvents:'all'}, "-=0.5")
+          .to(nextPage, 0.3, { backgroundImage: backgrounds[pageNumber]}, '-=0.2')
+          .fromTo(nextForm, 0.3, {y: '-200%'}, {y: '0%'}, '-=0.2')
+        setCurrent(pageNumber);
     }
 
     useEffect(()=>{
@@ -59,11 +97,12 @@ function AddPageMain() {
                 !jwt_token && (
                     <main>
                         <AddSkill/>
-                        
+                        <AddProject/>
+                        <AddCourse/>
                     </main>
                 )
             }
-            <AddPagePointer/>
+            <AddPagePointer changeDots={nextSlide}/>
         </div>
     )
 }
