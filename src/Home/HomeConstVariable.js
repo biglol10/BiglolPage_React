@@ -20,7 +20,7 @@ const logo_skills = {
         {'item_name' : 'Covid19Tracker', 'img_url' : './Images/Projects/Covid19Tracker.png'},
         {'item_name' : 'NetflixClone', 'img_url' : './Images/Projects/NetflixClone.png'},
         {'item_name' : 'SystemMonitoring', 'img_url' : './Images/Projects/SystemMonitoring.png'},
-        {'item_name' : 'AmazonClone', 'img_url' : './Images/Projects/AmazonClone.png'},
+        {'item_name' : 'AmazonClone', 'img_url' : './Images/Projects/ShoppingClone.png'}
     ]
 }
 

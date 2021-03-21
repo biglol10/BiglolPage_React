@@ -79,6 +79,13 @@ function Header({backStyle}) {
                         </span>
                     </div>
                 </Link>
+                <Link to="/addpage">
+                    <div className="header_link_option">
+                        <span className="headerText">
+                            addpage
+                        </span>
+                    </div>
+                </Link>
                 <Link onClick={() => loginlogout(loginString)}>
                     <div className="header_link_option">
                         <span className="headerText">

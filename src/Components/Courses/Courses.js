@@ -21,7 +21,7 @@ function Courses() {
         const getCourseList = async () => {
             const response = await axios({
                 method: 'get',
-                url: `/courses/${courseType}`
+                url: `/courses/${courseType}`,
             })
             setCourseList(response.data)
         }

@@ -18,7 +18,7 @@ function Aboutme() {
             <div className="aboutContainer">
                 <h1>SELF INTRODUCTION</h1>
                 <div className="titleLayer">
-                    <img id="myPhoto" src="./Images/AboutMe/me.PNG" alt=""/>
+                    <img id="myPhoto" src="./Images/AboutMe/PictureOfMe.png" alt=""/>
                     <div className="aboutName">
                         <span>Jiwook Byun</span>
                     </div>

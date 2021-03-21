@@ -1,0 +1,79 @@
+.addPageMain {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+.addPage{
+    color: white;
+  background: radial-gradient(rgba(43, 55, 96, 1), rgba(11, 16, 35, 1));
+  display: grid;
+  grid-template-columns: 5% 1fr 1fr 1fr 5%;
+    min-height:93vh;
+}
+
+.details {
+    grid-column: 2/3;
+    align-self: end;
+    text-shadow: 2px 2px 2px rgba(255,255,255,0.5);
+}
+
+.addPage > form {
+    overflow: hidden;
+    align-self: center;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background-color: white;
+    width: 500px;
+    padding-top:20px;
+    border-radius: 30px;
+}
+
+#submitSkill {
+    margin-top:15px;
+    margin-bottom: 20px;
+    float: right;
+}
+
+.addPage > form > .hero > h2{
+    margin:15px 0px;
+}
+
+.addPage > form > .hero{
+    width:300px;
+    margin:0 auto;
+}
+
+.addPage > form > .hero > .MuiFormControl-root{
+    width: 100%;
+    margin:15px 0px;
+}
+
+.filebox{
+    display: flex;
+    justify-content: space-between;
+}
+
+.filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+  }
+  
+  .filebox label {
+    display: inline-block;
+    padding: 5px 10px;
+    color: #999;
+    vertical-align: middle;
+    background-color: #fdfdfd;
+    cursor: pointer;
+    border: 1px solid #ebebeb;
+    border-radius: 5px;
+  }
+  

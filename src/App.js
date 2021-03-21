@@ -9,6 +9,7 @@ import Projects from './Components/Projects/Projects';
 import Courses from './Components/Courses/Courses';
 import Aboutme from './Components/AboutMe/Aboutme';
 import Login from './Home/Login';
+import AddPageMain from './Components/AddSubject/AddPageMain';
 
 function App() {
   return (
@@ -43,6 +44,12 @@ function App() {
             <div>
               <Header backStyle={false}/>
               <Login/>
+            </div>
+          </Route>
+          <Route path="/addpage">
+            <div>
+              <Header backStyle={false}/>
+              <AddPageMain/>
             </div>
           </Route>
           <Route path="/">
