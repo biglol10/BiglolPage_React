@@ -29,7 +29,6 @@ function AddCourse() {
     const [{jwt_token}, dispatch] = useStateValue();
     
     const handleChange = (event) => {
-        console.log(event);
         setItemAttribute({...itemAttribute, [event.target.name] : event.target.value});
     }
 
@@ -80,14 +79,24 @@ function AddCourse() {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
+                }).then((resp) => {
+                    console.log('resp in then > ', resp)
+                    if(resp.status == 200){
+                        toast.success("Image Upload Success", {
+                            position: toast.POSITION.BOTTOM_LEFT
+                        })
+                    }
+                    else{
+                        toast.error("Image Upload Failed", {
+                            position: toast.POSITION.BOTTOM_LEFT
+                        })
+                    }
+                }).catch((err) => {
+                    console.log('err in then ', err);
+                    toast.error("Image Upload Failed", {
+                        position: toast.POSITION.BOTTOM_LEFT
+                    })
                 });
-            
-                console.log(res);
-                const { fileName, filePath } = res;
-                        
-                toast.success("Image Upload Success", {
-                    position: toast.POSITION.BOTTOM_LEFT
-                })
             } catch (err) {
                 console.log(err);
                 toast.error("Image Upload Failed", {
@@ -96,8 +105,9 @@ function AddCourse() {
             }
         })
         .catch((err) => {
+            console.log(err);
             if(err.response.status === 500){
-                toast.error("There was a problem with the server", {
+                toast.error("Problem with server or invalid jwt token", {
                     position: toast.POSITION.BOTTOM_LEFT
                 })
             }
@@ -106,6 +116,7 @@ function AddCourse() {
                     position: toast.POSITION.BOTTOM_LEFT
                 })
             }
+            console.log(err.message);
         })
     }
 
