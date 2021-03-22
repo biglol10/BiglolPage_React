@@ -11,6 +11,10 @@ import Aboutme from './Components/AboutMe/Aboutme';
 import Login from './Home/Login';
 import AddPageMain from './Components/AddSubject/AddPageMain';
 
+// /products/:productID is also available
+// then import {useParams} from 'react-router'
+// const {productID} = useParams();
+
 function App() {
   return (
     <Router>
@@ -52,7 +56,7 @@ function App() {
               <AddPageMain/>
             </div>
           </Route>
-          <Route path="/">
+          <Route path="/" exact>
             <div className="AppHome">
               <Header backStyle={true}/>
               <Home/>

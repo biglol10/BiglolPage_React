@@ -17,7 +17,7 @@ function AddProject() {
         {
             project_name: '', 
             project_path: './Images/Projects', 
-            project_referece: '', 
+            project_reference: '', 
             project_opinion: '',
             project_org_creator: '',
             project_deployedUrl: '',
