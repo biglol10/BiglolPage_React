@@ -225,7 +225,7 @@ function AddProject() {
                             </Select>
                         </FormControl>
                         <div class="filebox"> 
-                            <label for="project_file" style={{color: 'darkviolet'}}>업로드</label> 
+                            <label htmlFor="project_file" style={{color: 'darkviolet'}}>업로드</label> 
                             <input type="file" id="project_file" onChange={onFileChange}/> 
                             
                             <input class="upload-name" value={theFileName}/>

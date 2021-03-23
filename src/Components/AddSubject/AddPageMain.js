@@ -116,7 +116,6 @@ function AddPageMain() {
     }
     
     const scrollChange = e => {
-        alert("ASDF")
         if(e.deltaY > 0){
             scrollSlide += 1;
         }
@@ -141,9 +140,14 @@ function AddPageMain() {
             openPopupbox();
         }
 
-        const wheelEvent = window.addEventListener('wheel', throttle(scrollChange, 1500));
+        // ******** This is necessary... if you do windows.addevent or document.addevent this will affect other components
+        // ******** Be aware!!!!!!!!!! 
+        const mainpage = document.getElementsByClassName('addPageMain')[0];
+        // ******** Be aware!!!!!!!!!!
+
+        const wheelEvent = mainpage.addEventListener('wheel', throttle(scrollChange, 1500));
         return () => {
-            window.removeEventListener('wheel', wheelEvent);
+            mainpage.removeEventListener('wheel', wheelEvent);
         }
     },[])
 

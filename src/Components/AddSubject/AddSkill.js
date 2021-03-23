@@ -151,7 +151,7 @@ function AddSkill() {
                             onChange={handleChange}
                         />
                         <div class="filebox"> 
-                            <label for="skill_file" style={{color: 'darkviolet'}}>업로드</label> 
+                            <label htmlFor="skill_file" style={{color: 'darkviolet'}}>업로드</label> 
                             <input type="file" id="skill_file" onChange={onFileChange}/> 
                             
                             <input class="upload-name" value={theFileName}/>

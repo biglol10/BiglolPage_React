@@ -215,7 +215,7 @@ function AddCourse() {
                             </Select>
                         </FormControl>
                         <div class="filebox"> 
-                            <label for="course_file" style={{color: 'darkviolet'}}>업로드</label> 
+                            <label htmlFor="course_file" style={{color: 'darkviolet'}}>업로드</label> 
                             <input type="file" id="course_file" onChange={onFileChange}/> 
                             
                             <input class="upload-name" value={theFileName}/>
