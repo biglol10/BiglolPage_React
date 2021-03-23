@@ -45,11 +45,12 @@ function AddPageMain() {
     ];
     
     const [current, setCurrent] = useState(0);
+    const [scrollSlide, setScrollSlide] = useState(0);
 
     const nextSlide = (pageNumber) => {
         const slides = document.querySelectorAll(".slide");
         const pages = document.querySelectorAll(".addPage");
-        pageNumber-=1;
+        
         const nextPage = pages[pageNumber];
         const currentPage = pages[current];
         const nextForm = nextPage.querySelector('form');
@@ -75,16 +76,53 @@ function AddPageMain() {
           .fromTo(nextPage, 0.3, {opacity: 0, pointerEvents: 'none'}, {opacity: 1, pointerEvents:'all'}, "-=0.5")
           .to(nextPage, 0.3, { backgroundImage: backgrounds[pageNumber]}, '-=0.2')
           .fromTo(nextForm, 0.3, {y: '-200%'}, {y: '0%'}, '-=0.2')
+
         setCurrent(pageNumber);
     }
 
+    const throttle = (func, limit) => {
+        let inThrottle;
+        return function(){
+            const args = arguments;
+            const context = this;
+            if (!inThrottle) {
+                func.apply(context, args);
+                inThrottle = true;
+                setTimeout(() => (inThrottle = false), limit);
+            }
+        }
+    }
+
+
+    let ssss = 0;
+
+    const scrollChange = e => {
+        if(e.deltaY > 0){
+            ssss += 1;
+        }
+        else{
+            ssss -= 1;
+        }
+        if(ssss > 2){
+            ssss = 0;
+        }
+        if(ssss < 0){
+            ssss = 2;
+        }
+        console.log(ssss);
+        nextSlide(ssss);
+    }
+
     useEffect(()=>{
-        if(jwt_token){
-            // alert("You do not have proper authentication");
-            openPopupbox();
-            setTimeout(function() {
-                history.push('/');
-            }, 3000);
+        const jwtToken = sessionStorage.getItem("jwt");
+        // if(!jwt_token){
+        //     // alert("You do not have proper authentication");
+        //     openPopupbox();
+        // }
+
+        const wheelEvent = window.addEventListener('wheel', throttle(scrollChange, 1500));
+        return () => {
+            window.removeEventListener('wheel', wheelEvent);
         }
     },[])
 
@@ -102,7 +140,7 @@ function AddPageMain() {
                     </main>
                 )
             }
-            <AddPagePointer changeDots={nextSlide}/>
+            <AddPagePointer changeSlide={nextSlide}/>
         </div>
     )
 }
