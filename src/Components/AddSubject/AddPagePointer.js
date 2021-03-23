@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import './AddPagePointer.css';
 
-function AddPagePointer({changeSlide}) {
+function AddPagePointer({changeSlide, changeDot}) {
     const handlePageClick = (idx) => {
         const slides = document.querySelectorAll('.slide');
         slides.forEach(slide => {
@@ -10,6 +10,7 @@ function AddPagePointer({changeSlide}) {
         const thisslide = document.querySelector(`.page-${idx} svg`);
         thisslide.classList.add('active');
         changeSlide(idx);
+        changeDot(thisslide);
     }
 
     return (

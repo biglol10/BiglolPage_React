@@ -37,17 +37,17 @@ function AddPageMain() {
         setItemAttribute({...itemAttribute, [event.target.name] : event.target.value});
     }
 
-    
     const backgrounds = [
         `radial-gradient(#2B3760, #0B1023)`,
         `radial-gradient(#4E3022, #161616)`,
         `radial-gradient(#4E4342, #161616)`
     ];
     
-    const [current, setCurrent] = useState(0);
-    const [scrollSlide, setScrollSlide] = useState(0);
+    let current = 0;
+    let scrollSlide = 0;
 
     const nextSlide = (pageNumber) => {
+        scrollSlide = pageNumber;
         const slides = document.querySelectorAll(".slide");
         const pages = document.querySelectorAll(".addPage");
         
@@ -71,13 +71,18 @@ function AddPageMain() {
             }
         })
 
+        // console.log(currentPage);
+        // console.log(nextPage);
+
         tl.fromTo(currentForm, 0.3, { y: '0%'}, {y: '-200%'})
+          .to(nextPage, 0.3, { backgroundImage: backgrounds[pageNumber]}, '-=0.2')
           .fromTo(currentPage, 0.3, {opacity: 1, pointerEvents: 'all'}, { opacity: 0, pointerEvents: 'none'})
           .fromTo(nextPage, 0.3, {opacity: 0, pointerEvents: 'none'}, {opacity: 1, pointerEvents:'all'}, "-=0.5")
-          .to(nextPage, 0.3, { backgroundImage: backgrounds[pageNumber]}, '-=0.2')
           .fromTo(nextForm, 0.3, {y: '-200%'}, {y: '0%'}, '-=0.2')
+          .set(currentPage, { clearProps: 'all'})
+          .set(nextForm, { clearProps: 'all'})
 
-        setCurrent(pageNumber);
+        current = pageNumber;
     }
 
     const throttle = (func, limit) => {
@@ -93,32 +98,48 @@ function AddPageMain() {
         }
     }
 
+    const changeDot = (dot) => {
+        const slides = document.querySelectorAll('.slide');
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+        dot.classList.add('active');
+    }
 
-    let ssss = 0;
-
+    const switchDots = (dotNumber) => {
+        const slides = document.querySelectorAll('.slide');
+        const activeDot = document.querySelectorAll(".slide")[dotNumber];
+        slides.forEach(aSlide => {
+            aSlide.classList.remove("active");
+        });
+        activeDot.classList.add("active");
+    }
+    
     const scrollChange = e => {
+        alert("ASDF")
         if(e.deltaY > 0){
-            ssss += 1;
+            scrollSlide += 1;
         }
         else{
-            ssss -= 1;
+            scrollSlide -= 1;
         }
-        if(ssss > 2){
-            ssss = 0;
+        if(scrollSlide > 2){
+            scrollSlide = 0;
         }
-        if(ssss < 0){
-            ssss = 2;
+        if(scrollSlide < 0){
+            scrollSlide = 2;
         }
-        console.log(ssss);
-        nextSlide(ssss);
+        console.log(scrollSlide);
+        nextSlide(scrollSlide);
+        switchDots(scrollSlide);
     }
 
     useEffect(()=>{
         const jwtToken = sessionStorage.getItem("jwt");
-        // if(!jwt_token){
-        //     // alert("You do not have proper authentication");
-        //     openPopupbox();
-        // }
+        if(!jwt_token){
+            // alert("You do not have proper authentication");
+            openPopupbox();
+        }
 
         const wheelEvent = window.addEventListener('wheel', throttle(scrollChange, 1500));
         return () => {
@@ -140,7 +161,7 @@ function AddPageMain() {
                     </main>
                 )
             }
-            <AddPagePointer changeSlide={nextSlide}/>
+            <AddPagePointer changeSlide={nextSlide} changeDot={changeDot}/>
         </div>
     )
 }
