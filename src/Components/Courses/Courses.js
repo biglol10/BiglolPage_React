@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Courses.css';
 import CourseItem from './CourseItem';
 import axios from 'axios';
+import serverConstant from '../../ServerContant';
 
 function Courses() {
     const buttonChange = (idValue, type) => {
@@ -21,7 +22,7 @@ function Courses() {
         const getCourseList = async () => {
             const response = await axios({
                 method: 'get',
-                url: `http://localhost:8080/courses/${courseType}`,
+                url: `${serverConstant['SERVER_URL']}/courses/${courseType}`,
             })
             setCourseList(response.data)
         }

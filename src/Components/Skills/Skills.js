@@ -3,7 +3,7 @@ import './Skills.css';
 import Skill_Item from './Skill_Item';
 import axios from 'axios';
 import FlipMove from "react-flip-move";
-
+import serverConstant from '../../ServerContant';
 
 function Skills() {
 
@@ -15,7 +15,7 @@ function Skills() {
         const getSkillList = async () => {
             const response = await axios({
                 method: 'get',
-                url: 'http://localhost:8080/skills',
+                url: `${serverConstant['SERVER_URL']}/skills`,
                 // headers: {'Authorization': jwtToken}
             })
             setSkillList(response.data)

@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useStateValue } from '../../StateProvider';
 import { AirportShuttleTwoTone } from '@material-ui/icons';
 import { ToastContainer, toast } from 'react-toastify';
-
+import serverConstant from '../../ServerContant';
 
 function AddSkill({checkDecimal}) {
     const [itemAttribute, setItemAttribute] = useState({skill_name: '', skill_path: './Images/Skills', skill_opinion: '', skill_rating: 0});
@@ -41,7 +41,8 @@ function AddSkill({checkDecimal}) {
         }
 
         const fileExtension = theFileName.split('.').pop();
-        if(fileExtension.indexOf('jpg') < 0 || fileExtension.indexOf('png') < 0){
+        const extensions = ['jpg', 'png'];
+        if(!extensions.includes(fileExtension)){
             toast.error("Only jpg, png extension file is allowed", {
                 position: toast.POSITION.BOTTOM_LEFT
             })
@@ -67,7 +68,7 @@ function AddSkill({checkDecimal}) {
             // Authorization: jwtToken
         }
 
-        axios.post('http://localhost:8080/skills', JSON.stringify(param), axiosConfig)
+        axios.post(`${serverConstant['SERVER_URL']}/skills`, JSON.stringify(param), axiosConfig)
         .then((response) => {
 
             const formData = new FormData();

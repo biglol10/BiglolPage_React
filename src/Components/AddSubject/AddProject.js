@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import AddImage from './AddImage';
-import axios from '../../axios';
+import axios from 'axios';
 import { useStateValue } from '../../StateProvider';
 import { AirportShuttleTwoTone } from '@material-ui/icons';
 import { ToastContainer, toast } from 'react-toastify';
@@ -11,6 +11,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
+import serverConstant from '../../ServerContant';
 
 function AddProject({checkDecimal}) {
     const [itemAttribute, setItemAttribute] = useState(
@@ -47,7 +48,7 @@ function AddProject({checkDecimal}) {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        if(!checkDecimal(itemAttribute.skill_rating)){
+        if(!checkDecimal(itemAttribute.project_rating)){
             toast.error("Valid Rating Required or divisible by 0.5", {
                 position: toast.POSITION.BOTTOM_LEFT
             })
@@ -55,7 +56,8 @@ function AddProject({checkDecimal}) {
         }
 
         const fileExtension = theFileName.split('.').pop();
-        if(fileExtension.indexOf('jpg') < 0 || fileExtension.indexOf('png') < 0){
+        const extensions = ['jpg', 'png'];
+        if(!extensions.includes(fileExtension)){
             toast.error("Only jpg, png extension file is allowed", {
                 position: toast.POSITION.BOTTOM_LEFT
             })
@@ -82,14 +84,14 @@ function AddProject({checkDecimal}) {
             noUrl: itemAttribute.project_noUrl
         }
 
-        axios.post('/projects', JSON.stringify(param), axiosConfig)
+        axios.post(`${serverConstant['SERVER_URL']}/projects`, JSON.stringify(param), axiosConfig)
         .then((response) => {
 
             const formData = new FormData();
             formData.append('file', file);
         
             try {
-                const res = axios.post('http://localhost:3000/upload/project', formData, {
+                const res = axios.post('/upload/project', formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Projects.css';
 import Project_Item from './Project_Item';
 import axios from 'axios';
-
+import serverConstant from '../../ServerContant';
 
 function Projects() {
     const [projectList, setProjectList] = useState([]);
@@ -10,7 +10,7 @@ function Projects() {
     useEffect(()=>{
         const getProjectList = async () => {
             const response = await axios({
-                url: 'http://localhost:8080/projects',
+                url: `${serverConstant['SERVER_URL']}/projects`,
                 method: 'get',
             })
             setProjectList(response.data)
