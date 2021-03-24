@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './Skills.css';
 import Skill_Item from './Skill_Item';
-import axios from '../../axios';
+import axios from 'axios';
 import FlipMove from "react-flip-move";
+
 
 function Skills() {
 
@@ -14,7 +15,7 @@ function Skills() {
         const getSkillList = async () => {
             const response = await axios({
                 method: 'get',
-                url: '/skills',
+                url: 'http://localhost:8080/skills',
                 // headers: {'Authorization': jwtToken}
             })
             setSkillList(response.data)

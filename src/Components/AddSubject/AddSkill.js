@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import AddImage from './AddImage';
-import axios from '../../axios';
+import axios from 'axios';
 import { useStateValue } from '../../StateProvider';
 import { AirportShuttleTwoTone } from '@material-ui/icons';
 import { ToastContainer, toast } from 'react-toastify';
+
 
 function AddSkill({checkDecimal}) {
     const [itemAttribute, setItemAttribute] = useState({skill_name: '', skill_path: './Images/Skills', skill_opinion: '', skill_rating: 0});
@@ -66,14 +67,14 @@ function AddSkill({checkDecimal}) {
             // Authorization: jwtToken
         }
 
-        axios.post('/skills', JSON.stringify(param), axiosConfig)
+        axios.post('http://localhost:8080/skills', JSON.stringify(param), axiosConfig)
         .then((response) => {
 
             const formData = new FormData();
             formData.append('file', file);
         
             try {
-                const res = axios.post('http://localhost:3000/upload/skill', formData, {
+                const res = axios.post('/upload/skill', formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }

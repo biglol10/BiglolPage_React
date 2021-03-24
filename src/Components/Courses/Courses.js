@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Courses.css';
 import CourseItem from './CourseItem';
-import axios from '../../axios';
+import axios from 'axios';
 
 function Courses() {
     const buttonChange = (idValue, type) => {
@@ -21,14 +21,13 @@ function Courses() {
         const getCourseList = async () => {
             const response = await axios({
                 method: 'get',
-                url: `/courses/${courseType}`,
+                url: `http://localhost:8080/courses/${courseType}`,
             })
             setCourseList(response.data)
         }
         getCourseList();
     }, [courseType])
     
-    // console.log(courseList);
     return (
         <div className="coursesPage">
             <div className="courseText">

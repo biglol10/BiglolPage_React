@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Projects.css';
 import Project_Item from './Project_Item';
-import axios from '../../axios';
+import axios from 'axios';
+
 
 function Projects() {
     const [projectList, setProjectList] = useState([]);
@@ -9,8 +10,8 @@ function Projects() {
     useEffect(()=>{
         const getProjectList = async () => {
             const response = await axios({
+                url: 'http://localhost:8080/projects',
                 method: 'get',
-                url: '/projects'
             })
             setProjectList(response.data)
         }
