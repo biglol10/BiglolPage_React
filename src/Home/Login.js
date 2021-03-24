@@ -68,13 +68,13 @@ function Login() {
             localStorage.setItem("remem", checkedG);
             localStorage.setItem("idvalue", user.username);
             setAuth(true);
-            history.push('/');
-
+            
             dispatch({
                 type: 'SET_USER',
-                user: jwtToken
+                jwt_token: jwtToken
             })
-
+            history.push('/');
+            
         }, (error) => {
             // console.log(error);
             toast.error("Username/Password is incorrect", {
@@ -105,8 +105,7 @@ function Login() {
 
     useEffect(()=>{
         const rememberCheck = localStorage.getItem("remem");
-        // console.log('checkg ', checkedG);
-        // console.log('remem ', rememberCheck);
+
         const userName = localStorage.getItem("idvalue");
         if(rememberCheck == null || rememberCheck == false || rememberCheck == 'false' || checkedG == false){
             setCheckedG(false);

@@ -28,7 +28,7 @@ function Courses() {
         getCourseList();
     }, [courseType])
     
-    console.log(courseList);
+    // console.log(courseList);
     return (
         <div className="coursesPage">
             <div className="courseText">

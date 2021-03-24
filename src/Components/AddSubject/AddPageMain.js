@@ -42,12 +42,23 @@ function AddPageMain() {
         `radial-gradient(#4E3022, #161616)`,
         `radial-gradient(#4E4342, #161616)`
     ];
+
+    const checkDecimalNumber = (num) => {    // send to child
+        if(!isNaN(num)){
+            if(num % 0.5 == 0)
+                return true;
+            else
+                return false;
+        }
+        return false;
+    }
     
     let current = 0;
     let scrollSlide = 0;
 
     const nextSlide = (pageNumber) => {
         scrollSlide = pageNumber;
+        if(current == pageNumber) return;
         const slides = document.querySelectorAll(".slide");
         const pages = document.querySelectorAll(".addPage");
         
@@ -134,16 +145,16 @@ function AddPageMain() {
     }
 
     useEffect(()=>{
-        const jwtToken = sessionStorage.getItem("jwt");
-        if(!jwt_token){
+        // const jwtToken = sessionStorage.getItem("jwt");
+        if(!jwt_token){    // got from reducer
             // alert("You do not have proper authentication");
             openPopupbox();
         }
 
         // ******** This is necessary... if you do windows.addevent or document.addevent this will affect other components
-        // ******** Be aware!!!!!!!!!! 
+        // ******** Be aware of this !!!!!!!!!! 
         const mainpage = document.getElementsByClassName('addPageMain')[0];
-        // ******** Be aware!!!!!!!!!!
+        // ******** Be aware of this !!!!!!!!!!
 
         const wheelEvent = mainpage.addEventListener('wheel', throttle(scrollChange, 1500));
         return () => {
@@ -156,15 +167,11 @@ function AddPageMain() {
             {
                 <PopupboxContainer />
             }
-            {
-                !jwt_token && (
-                    <main>
-                        <AddSkill/>
-                        <AddProject/>
-                        <AddCourse/>
-                    </main>
-                )
-            }
+            <main>
+                <AddSkill checkDecimal = {checkDecimalNumber}/>
+                <AddProject checkDecimal = {checkDecimalNumber}/>
+                <AddCourse checkDecimal = {checkDecimalNumber}/>
+            </main>
             <AddPagePointer changeSlide={nextSlide} changeDot={changeDot}/>
         </div>
     )

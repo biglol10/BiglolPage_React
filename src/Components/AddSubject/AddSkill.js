@@ -7,7 +7,7 @@ import { useStateValue } from '../../StateProvider';
 import { AirportShuttleTwoTone } from '@material-ui/icons';
 import { ToastContainer, toast } from 'react-toastify';
 
-function AddSkill() {
+function AddSkill({checkDecimal}) {
     const [itemAttribute, setItemAttribute] = useState({skill_name: '', skill_path: './Images/Skills', skill_opinion: '', skill_rating: 0});
     const [file, setFile] = useState('');
     const [theFileName, setTheFileName] = useState('Choose Image');
@@ -27,9 +27,26 @@ function AddSkill() {
         setFile(e.target.files[0]);
         setTheFileName(e.target.files[0].name);
     }
+
 // headers: {'Authorization': jwtToken}
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+        if(!checkDecimal(itemAttribute.skill_rating)){
+            toast.error("Valid Rating Required or divisible by 0.5", {
+                position: toast.POSITION.BOTTOM_LEFT
+            })
+            return;
+        }
+
+        const fileExtension = theFileName.split('.').pop();
+        if(fileExtension.indexOf('jpg') < 0 || fileExtension.indexOf('png') < 0){
+            toast.error("Only jpg, png extension file is allowed", {
+                position: toast.POSITION.BOTTOM_LEFT
+            })
+            return;
+        }
+
         const jwtToken = sessionStorage.getItem("jwt");
         // console.log(itemAttribute);
         // console.log(file);
@@ -61,7 +78,7 @@ function AddSkill() {
                         'Content-Type': 'multipart/form-data'
                     }
                 }).then((resp) => {
-                    console.log('resp in then > ', resp)
+                    // console.log('resp in then > ', resp)
                     if(resp.status == 200){
                         toast.success("Image Upload Success", {
                             position: toast.POSITION.BOTTOM_LEFT
@@ -73,20 +90,20 @@ function AddSkill() {
                         })
                     }
                 }).catch((err) => {
-                    console.log('err in then ', err);
+                    // console.log('err in then ', err);
                     toast.error("Image Upload Failed", {
                         position: toast.POSITION.BOTTOM_LEFT
                     })
                 });
             } catch (err) {
-                console.log(err);
+                // console.log(err);
                 toast.error("Image Upload Failed", {
                     position: toast.POSITION.BOTTOM_LEFT
                 })
             }
         })
         .catch((err) => {
-            console.log(err);
+            // console.log(err);
             if(err.response.status === 500){
                 toast.error("Problem with server or invalid jwt token", {
                     position: toast.POSITION.BOTTOM_LEFT
@@ -97,7 +114,7 @@ function AddSkill() {
                     position: toast.POSITION.BOTTOM_LEFT
                 })
             }
-            console.log(err.message);
+            // console.log(err.message);
         })
     }
 

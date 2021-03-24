@@ -12,7 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 
-function AddCourse() {
+function AddCourse({checkDecimal}) {
     const [itemAttribute, setItemAttribute] = useState(
         {
             course_name: '', 
@@ -42,13 +42,27 @@ function AddCourse() {
         setFile(e.target.files[0]);
         setTheFileName(e.target.files[0].name);
     }
-// headers: {'Authorization': jwtToken}
+
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+        if(!checkDecimal(itemAttribute.skill_rating)){
+            toast.error("Valid Rating Required or divisible by 0.5", {
+                position: toast.POSITION.BOTTOM_LEFT
+            })
+            return;
+        }
+
+        const fileExtension = theFileName.split('.').pop();
+        if(fileExtension.indexOf('jpg') < 0 || fileExtension.indexOf('png') < 0){
+            toast.error("Only jpg, png extension file is allowed", {
+                position: toast.POSITION.BOTTOM_LEFT
+            })
+            return;
+        }
+
         const jwtToken = sessionStorage.getItem("jwt");
-        // console.log(itemAttribute);
-        // console.log(file);
-        // console.log(theFileName);
+
         const axiosConfig = {
             headers:{
                 "Content-Type": "application/json",
@@ -64,12 +78,10 @@ function AddCourse() {
             price: itemAttribute.course_price,
             rating: itemAttribute.course_rating,
             courseType: itemAttribute.course_courseType,
-            // Authorization: jwtToken
         }
 
         axios.post('/courses', JSON.stringify(param), axiosConfig)
         .then((response) => {
-            console.log(response);
 
             const formData = new FormData();
             formData.append('file', file);
@@ -80,7 +92,6 @@ function AddCourse() {
                         'Content-Type': 'multipart/form-data'
                     }
                 }).then((resp) => {
-                    console.log('resp in then > ', resp)
                     if(resp.status == 200){
                         toast.success("Image Upload Success", {
                             position: toast.POSITION.BOTTOM_LEFT
@@ -92,20 +103,17 @@ function AddCourse() {
                         })
                     }
                 }).catch((err) => {
-                    console.log('err in then ', err);
                     toast.error("Image Upload Failed", {
                         position: toast.POSITION.BOTTOM_LEFT
                     })
                 });
             } catch (err) {
-                console.log(err);
                 toast.error("Image Upload Failed", {
                     position: toast.POSITION.BOTTOM_LEFT
                 })
             }
         })
         .catch((err) => {
-            console.log(err);
             if(err.response.status === 500){
                 toast.error("Problem with server or invalid jwt token", {
                     position: toast.POSITION.BOTTOM_LEFT
@@ -116,7 +124,6 @@ function AddCourse() {
                     position: toast.POSITION.BOTTOM_LEFT
                 })
             }
-            console.log(err.message);
         })
     }
 
