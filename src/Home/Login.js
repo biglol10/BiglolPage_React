@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import axios from '../axios';
+import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import './Login.css';
@@ -14,6 +14,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link, useHistory } from 'react-router-dom';
 import { useStateValue } from '../StateProvider';
+import serverConstant from '../ServerContant';
 
 function Login() {
     const [user, setUser] = useState({username: '', password: ''})
@@ -58,7 +59,7 @@ function Login() {
             return;
         }
 
-        axios.post('/login', {
+        axios.post(`${serverConstant['SERVER_URL']}/login`, {
             username: user.username,  
             password: user.password
         })
