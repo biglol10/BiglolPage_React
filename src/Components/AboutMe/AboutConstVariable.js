@@ -1,5 +1,5 @@
 const Chronology_Const = {
-    '~ 2090':[
+    '~ 2009':[
         'Moved to a country called Uzbekistan',
         'Studied in TUIS, which stands for Tashkent Ulugbek International School',
         'Studied English and Russian at School and through private lessons',
