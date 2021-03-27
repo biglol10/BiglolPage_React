@@ -49,7 +49,7 @@ function Aboutme() {
                 </div>
             </div>
             <div className="chronologyContainer">
-                <Chronology year='~ 2090' circleColor='#3498DB'/>
+                <Chronology year='~ 2009' circleColor='#3498DB'/>
                 <Chronology year='2010 ~ 2012' circleColor='#990000'/>
                 <Chronology year='2012 ~ 2014' circleColor='#4b5320'/>
                 <Chronology year='2014 ~ 2018' circleColor='#F7DC6F'/>
