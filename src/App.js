@@ -10,6 +10,7 @@ import Courses from './Components/Courses/Courses';
 import Aboutme from './Components/AboutMe/Aboutme';
 import Login from './Home/Login';
 import AddPageMain from './Components/AddSubject/AddPageMain';
+import YoutubeComp from './Home/YoutubeComp';
 
 // /products/:productID is also available
 // then import {useParams} from 'react-router'
@@ -42,6 +43,12 @@ function App() {
             <div className="AppPage">
               <Sidebar/>
               <Aboutme/>
+            </div>
+          </Route>
+          <Route path="/projectInfo">
+            <div className="AppPage">
+              <Sidebar/>
+              <YoutubeComp/>
             </div>
           </Route>
           <Route path="/login">

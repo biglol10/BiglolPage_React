@@ -10,6 +10,7 @@ import StarsIcon from '@material-ui/icons/Stars';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import LockIcon from '@material-ui/icons/Lock';
+import FeaturedVideoIcon from '@material-ui/icons/FeaturedVideo';
 import { Link, useHistory } from 'react-router-dom';
 
 function Sidebar() {
@@ -76,6 +77,12 @@ function Sidebar() {
                 <div className="sidebarOption">
                     <AssignmentIcon/>
                     <span>CLONE / PROJECTS</span>
+                </div>
+            </Link>
+            <Link to="/projectInfo">
+                <div className="sidebarOption">
+                    <FeaturedVideoIcon/>
+                    <span>Story</span>
                 </div>
             </Link>
             <Link onClick={() => loginlogout(loginString)}>

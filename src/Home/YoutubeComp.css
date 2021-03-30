@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
+
+.youtubePage {
+  margin-left: 15%;
+  width: 85%;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm40 40a8 8 0 1 0 0-16 8 8 0 0 0 0 16z' fill='%23eaeaea' fill-opacity='.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+  height: 100vh;
+  overflow-y: overlay;
+  display: grid;
+  grid-template-columns: 10% 1fr 10%;
+}
+
+.youtubePage > .youtubeVideo {
+  grid-column: 2/3;
+  width: 100%;
+  margin-top: 50px;
+  height: 600px;
+}
+
+.myprojectInfo a,
+.myprojectInfo span,
+.myprojectInfo h2 {
+  font-family: "Arvo", serif;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.youtubePage > .youtubeVideo > .myprojectInfo {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.youtubePage > .youtubeVideo > .myprojectInfo > .infogrid1 {
+  grid-column: 1/2;
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+.youtubePage > .youtubeVideo > .myprojectInfo > .infogrid1 > i,
+.youtubePage > .youtubeVideo > .myprojectInfo > .infogrid1 > span {
+  line-height: 40px;
+  vertical-align: middle;
+  margin-right: 30px;
+}
+
+.youtubePage > .youtubeVideo > .myprojectInfo > .infogrid2 {
+  grid-column: 2/2;
+  height: 40px;
+}
+
+.youtubePage > .youtubeVideo > .myprojectInfo > .infogrid2 > i,
+.youtubePage > .youtubeVideo > .myprojectInfo > .infogrid2 > span {
+  line-height: 40px;
+  vertical-align: middle;
+  margin-right: 30px;
+}
