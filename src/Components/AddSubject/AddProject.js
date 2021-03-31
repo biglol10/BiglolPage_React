@@ -76,7 +76,7 @@ function AddProject({checkDecimal}) {
         const param = {
             name: itemAttribute.project_name,
             path: itemAttribute.project_path + '/' + theFileName,
-            reference: itemAttribute.project_referece,
+            reference: itemAttribute.project_reference,
             opinion: itemAttribute.project_opinion,
             original_creator: itemAttribute.project_org_creator,
             deployedURL: itemAttribute.project_deployedUrl,
