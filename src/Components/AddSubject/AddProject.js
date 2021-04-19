@@ -66,10 +66,20 @@ function AddProject({checkDecimal}) {
 
         const jwtToken = sessionStorage.getItem("jwt");
 
-        const axiosConfig = {
-            headers:{
-                "Content-Type": "application/json",
-                'Authorization': jwtToken
+        let axiosConfig = {};
+        if(jwtToken == null){
+            axiosConfig = {
+                headers:{
+                    "Content-Type": "application/json"
+                }
+            }
+        }
+        else{
+            axiosConfig = {
+                headers:{
+                    "Content-Type": "application/json",
+                    'Authorization': jwtToken
+                }
             }
         }
 
@@ -86,50 +96,46 @@ function AddProject({checkDecimal}) {
 
         axios.post(`${serverConstant['SERVER_URL']}/projects`, JSON.stringify(param), axiosConfig)
         .then((response) => {
-
             const formData = new FormData();
             formData.append('file', file);
-        
-            try {
-                const res = axios.post('/upload/project', formData, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                }).then((resp) => {
-                    if(resp.status == 200){
-                        toast.success("Image Upload Success", {
-                            position: toast.POSITION.BOTTOM_LEFT
-                        })
-                    }
-                    else{
-                        toast.error("Image Upload Failed", {
-                            position: toast.POSITION.BOTTOM_LEFT
-                        })
-                    }
-                }).catch((err) => {
-                    toast.error("Image Upload Failed", {
-                        position: toast.POSITION.BOTTOM_LEFT
-                    })
-                });
-            } catch (err) {
-                toast.error("Image Upload Failed", {
+
+            const res = axios.post('/upload/project', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }).then((resp) => {
+                console.log('project upload response > ', resp);
+                toast.success("Data/Image Upload Success", {
+                    position: toast.POSITION.BOTTOM_LEFT
+                })
+            })
+            .catch((err1) => {
+                console.log('project upload error1 > ', err1);
+                toast.error('[Data is Saved] But image upload failed', {
+                    position: toast.POSITION.BOTTOM_LEFT
+                })
+            })
+        })
+        .catch((err2) => {
+            console.log('project upload error2 > ', err2);
+            if(err2.response.status == 403){
+                toast.error('No proper authentication', {
                     position: toast.POSITION.BOTTOM_LEFT
                 })
             }
-        })
-        .catch((err) => {
-            if(err.response.status === 500){
-                toast.error("Problem with server or invalid jwt token", {
+            else if (err2.response.status == 400){
+                toast.error('Validation Failed for Project name', {
                     position: toast.POSITION.BOTTOM_LEFT
                 })
             }
             else{
-                toast.error("Authentication expired / inappropriate credentials", {
+                toast.error('Internal Server Error', {
                     position: toast.POSITION.BOTTOM_LEFT
                 })
             }
         })
     }
+
 
     const useStyles = makeStyles((theme) => ({
         formControl: {
