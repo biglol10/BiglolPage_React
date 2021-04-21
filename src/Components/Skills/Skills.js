@@ -46,7 +46,7 @@ function Skills() {
                             })
                         }
                     }
-                    catch(exception) {
+                    catch (exception) {
                         toast.error("Connection Timeout [Server Problem]", {
                             position: toast.POSITION.BOTTOM_LEFT
                         })
@@ -55,7 +55,7 @@ function Skills() {
                 
             }
             getSkillList();   
-        }, 1000);
+        }, 700);
 
         
 

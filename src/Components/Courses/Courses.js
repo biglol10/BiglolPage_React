@@ -56,7 +56,7 @@ function Courses() {
                 })
             }
             getCourseList();
-        }, 1000);
+        }, 700);
         
     }, [courseType])
     

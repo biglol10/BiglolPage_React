@@ -45,7 +45,7 @@ function Projects() {
                 
             }
             getProjectList();
-        }, 1000);
+        }, 700);
         
         
     }, [])
